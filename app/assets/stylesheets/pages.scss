@@ -1,3 +1,12 @@
 // Place all the styles related to the Pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.error {
+  border-color: red !important;
+}
+
+.error-text {
+  color: red !important;
+  // padding-left: 0.75rem;
+}

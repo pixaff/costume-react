@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ScriptsControllerTest < ActionDispatch::IntegrationTest
+class RoleTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

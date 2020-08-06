@@ -1,11 +1,16 @@
 class Api::V1::ScenesController < ApplicationController
   def create
-    scene = Scene.new(scene_params)
-
-    if scene.save
-      render json: SceneSerializer.new(scene).serialized_json
+    scene = script.scenes.new(scene_params)
+    if no_error?(scene)
+      if scene.save
+        render json: SceneSerializer.new(scene).serialized_json
+      else
+        render json: { error: scene.errors.messages }, status: 422
+        # render json: { error: scene.errors.messages[:name] }, status: 423
+      end
     else
-      render json: { error: scene.errors.messages }, status: 422
+      render json: { error: "name must be unique" }, status: 422
+      # render json: 'Name needs to be unique'.to_json
     end
   end
 
@@ -20,6 +25,14 @@ class Api::V1::ScenesController < ApplicationController
   end
 
   private
+
+  def no_error?(scene)
+    Scene.where(name: scene.name, script_id: scene.script_id).empty?
+  end
+
+  def script
+    @script = Script.find(params[:script_id])
+  end
 
   def scene_params
     params.require(:scene).permit(:number, :name, :description, :body, :mood, :place, :notes)
