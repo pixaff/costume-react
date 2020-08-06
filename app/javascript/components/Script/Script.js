@@ -3,7 +3,7 @@ import axios from 'axios'
 // import { BrowserRouter as Router, Link } from 'react-router-dom'
 import Header from './Header'
 import SceneForm from './SceneForm'
-import Scene from './Scene'
+import SceneCard from './SceneCard'
 import Accordion from './Accordion'
 
 const Script = props => {
@@ -56,12 +56,16 @@ const Script = props => {
   let scenes
   if (loaded && script.included) {
     scenes = script.included.map( (item, index) => {
-      return (
-        <Scene
-          key={index}
-          attributes={item.attributes}
-        />
-      )
+      console.log(item)
+      if(item.type === "scene") {
+        return (
+          <SceneCard
+            key={index}
+            attributes={item.attributes}
+            roles={item.relationships.roles.data}
+          />
+        )
+      }
     })
   }
 

@@ -1,5 +1,8 @@
 class Scene < ApplicationRecord
   belongs_to :script
   validates :name, presence: true
-  validates :name, uniqueness: true, case_sensitive: false
+  validates :name, uniqueness: { scope: :script_id, case_sensitive: false }
+  validates :number, uniqueness: { scope: :script_id, case_sensitive: false }
+  has_many :scene_roles, dependent: :destroy
+  has_many :roles, through: :scene_roles
 end

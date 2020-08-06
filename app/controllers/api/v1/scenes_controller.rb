@@ -10,6 +10,7 @@ class Api::V1::ScenesController < ApplicationController
       end
     else
       render json: { error: "name must be unique" }, status: 422
+      # render json: { status: "error", code: 4000, message: "item_id is required to make a purchase" }
       # render json: 'Name needs to be unique'.to_json
     end
   end

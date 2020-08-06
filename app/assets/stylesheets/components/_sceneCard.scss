@@ -1,0 +1,31 @@
+// Scene-Card on script page
+.scene-card {
+  margin-bottom: 16px;
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+}
+
+.scene-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(0,0,0,0.05);
+  margin: 0.75rem;
+  text-align: center;
+}
+
+.scene-number p {
+  margin: 0;
+}
+
+.scene-name {
+  font-size: 1.25rem;
+  font-weight: 500;
+  padding-left: 0 !important;
+}
+
+.scene-roles {
+  margin: 0 0.75rem 0.75rem 0.75rem;
+}

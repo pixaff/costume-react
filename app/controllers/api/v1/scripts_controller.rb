@@ -1,12 +1,12 @@
 class Api::V1::ScriptsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_script, only: [:show, :edit, :update, :destroy]
-  protect_from_forgery with: :null_session
+  # protect_from_forgery with: :null_session TODO: what does this line do???
 
   def index
     scripts = current_user.scripts.all
 
-    render json: ScriptSerializer.new(scripts, options).serialized_json
+    render json: ScriptSerializer.new(scripts).serialized_json
   end
 
   def show
@@ -107,6 +107,6 @@ class Api::V1::ScriptsController < ApplicationController
   # end
 
   def options # this method includes references to other models - here: scenes
-    @options ||= { include: %i[scenes] }
+    @options ||= { include: %i[scenes scenes.roles] }
   end
 end
