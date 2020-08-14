@@ -34,11 +34,29 @@ const SceneCard = (props) => {
         </div>
 
         <div className="row no-gutters">
-          <div className="col-lg-1 d-flex justify-content-center">roles:</div>
-          <div className="col-lg-11">{roles}</div>
+          <div className="col-lg-1 flex-column text-center">
+            <div>role</div>
+            <button className="btn btn-primary small-button">+</button>
+          </div>
+          <div className="col-lg-11">
+            <div className="row no-gutters">
+              <div className="scene-main col-lg-4">main: {roles}</div>
+              <div className="scene-feature col-lg-4">feature: {place}</div>
+              <div className="scene-extra col-lg-4">extra: {place}</div>
+            </div>
+          </div>
+
         </div>
-        <div className="scene-description row no-gutters">Description: {description}</div>
-        <div className="scene-footer row">notes in the footer</div>
+
+        <div className="row no-gutters">
+          <div className="scene-description col-lg-1 d-flex justify-content-center">content:</div>
+          <div className="scene-description col-lg-11">{description}</div>
+        </div>
+
+        <div className="row no-gutters">
+          <div className="scene-footer col-lg-1 d-flex justify-content-center">notes:</div>
+          <div className="scene-footer col-lg-11"><p>notes in the footer</p></div>
+        </div>
       </div>
     </div>
 

@@ -6,11 +6,11 @@ const SceneForm = (props) => {
   const validationError = props.validation === '' ? '' : "error"
   return (
 
-    <div className="accordion  container" id="accordionExample">
+    <div className="accordion container" id="accordionScene">
       <button className="btn btn-primary mb-3" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
         Add Scene
       </button>
-      <div id="collapseOne" className="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div id="collapseOne" className="collapse" aria-labelledby="headingOne" data-parent="#accordionScene">
         <div className="scene-form">
 
           <form onSubmit={props.handleSubmit} className="needs-validation">

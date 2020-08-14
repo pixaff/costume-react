@@ -3,7 +3,7 @@ import React from 'react'
 const SceneRole = (props) => {
   return (
     <div>
-      <p>{props.role}</p>
+      {props.role}
     </div>
   )
 }
