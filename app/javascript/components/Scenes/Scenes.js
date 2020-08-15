@@ -1,31 +1,14 @@
 import React, { useState, useEffect, Fragment } from 'react'
 import axios from 'axios'
-import { BrowserRouter } from 'react-router-dom'
-import Header from './Header'
-import SceneForm from './SceneForm'
-import RoleForm from './RoleForm'
 import SceneCard from './SceneCard'
-import MenuBar from '../MenuBar/MenuBar'
+import SceneForm from './SceneForm'
 
-
-const Script = props => {
-  const [script, setScript] = useState({})
+const Scenes = props => {
+  // console.log(props)
+  const [script, setScript] = useState(props.script)
   const [scene, setScene] = useState({})
-  const [loaded, setLoaded] = useState(false)
+  const [loaded, setLoaded] = useState(true)
   const [validation, setValidation] = useState('')
-
-  useEffect(() => {
-    const scriptID = props.match.params.id
-    const url = `/api/v1/scripts/${scriptID}`
-
-    axios.get(url)
-    .then( resp => {
-      setScript(resp.data)
-      setLoaded(true)
-    })
-    .catch(resp => console.log(resp))
-
-  }, [])
 
   const handleChange = (e) => {
     e.preventDefault()
@@ -56,9 +39,9 @@ const Script = props => {
   }
 
   let scenes
-  if (loaded && script.included) {
+  if (script.included) {
     scenes = script.included.map( (item, index) => {
-      console.log(item)
+      // console.log(item)
       if(item.type === "scene") {
         return (
           <SceneCard
@@ -76,18 +59,7 @@ const Script = props => {
       {
         loaded &&
           <Fragment>
-            <Header
-              attributes={script.data.attributes}
-            />
-            <MenuBar />
             <SceneForm
-              handleChange={handleChange}
-              handleSubmit={handleSubmit}
-              attributes={script.data.attributes}
-              scene={scene}
-              validation={validation}
-            />
-            <RoleForm
               handleChange={handleChange}
               handleSubmit={handleSubmit}
               attributes={script.data.attributes}
@@ -104,4 +76,4 @@ const Script = props => {
   )
 }
 
-export default Script
+export default Scenes

@@ -9,7 +9,7 @@ class Api::V1::ScenesController < ApplicationController
         # render json: { error: scene.errors.messages[:name] }, status: 423
       end
     else
-      render json: { error: "name must be unique" }, status: 422
+      render json: { error: "Custom message - name must be unique" }, status: 422
       # render json: { status: "error", code: 4000, message: "item_id is required to make a purchase" }
       # render json: 'Name needs to be unique'.to_json
     end
@@ -28,7 +28,8 @@ class Api::V1::ScenesController < ApplicationController
   private
 
   def no_error?(scene)
-    Scene.where(name: scene.name, script_id: scene.script_id).empty?
+    true
+    # Scene.where(name: scene.name, script_id: scene.script_id).empty?
   end
 
   def script

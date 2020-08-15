@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 const RoleForm = (props) => {
+  // console.log(props)
   const validationError = props.validation === '' ? '' : "error"
   return (
 
@@ -10,10 +11,6 @@ const RoleForm = (props) => {
       <button className="btn btn-primary mb-3" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
         Add Role
       </button>
-      <button className="btn btn-primary mb-3" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-        Add something
-      </button>
-      <div id="collapseThree">nummer 3</div>
       <div id="collapseTwo" className="collapse" aria-labelledby="headingOne" data-parent="#accordionRole">
         <div className="scene-form">
 
@@ -27,10 +24,10 @@ const RoleForm = (props) => {
                   id="inputName"
                   className={`form-control ${validationError}`}
                   onChange={props.handleChange}
-                  value={props.scene.name || ""}
+                  value={props.role.name || ""}
                   type="text"
                   name="name"
-                  placeholder="Scene Role"
+                  placeholder="Name"
                   required
                 />
                 <small className="form-text error-text">{props.validation}</small>
@@ -42,7 +39,7 @@ const RoleForm = (props) => {
                   id="inputNumber"
                   className="form-control"
                   onChange={props.handleChange}
-                  value={props.scene.number || ""}
+                  value={props.role.number || ""}
                   type="text"
                   name="number"
                   placeholder="Role number" />
@@ -54,9 +51,9 @@ const RoleForm = (props) => {
                   id="inputMood"
                   className="form-control"
                   onChange={props.handleChange}
-                  value={props.scene.mood || ""}
+                  value={props.role.role_type || ""}
                   type="text"
-                  name="type"
+                  name="role_type"
                   placeholder="Role type" />
               </div>
             </div>

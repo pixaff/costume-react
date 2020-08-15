@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 const SceneForm = (props) => {
-  const validationError = props.validation === '' ? '' : "error"
+  const validationError = props.validation === '' ? '' : "error"  // sets error class (i.e. red border)
   return (
 
     <div className="accordion container" id="accordionScene">
@@ -17,7 +17,8 @@ const SceneForm = (props) => {
             <div className="form-group">
               <input
                 id="inputName"
-                className={`form-control ${validationError}`}
+                className="form-control"
+                // className={`form-control ${validationError}`}
                 onChange={props.handleChange}
                 value={props.scene.name || ""}
                 type="text"
@@ -25,7 +26,7 @@ const SceneForm = (props) => {
                 placeholder="Scene Name"
                 required
               />
-              <small className="form-text error-text">{props.validation}</small>
+              <small className="form-text error-text">{props.validation.name}</small>
             </div>
 
             <div className="form-row">
@@ -38,7 +39,10 @@ const SceneForm = (props) => {
                   value={props.scene.number || ""}
                   type="text"
                   name="number"
-                  placeholder="Scene number" />
+                  placeholder="Scene number"
+                  required
+                />
+                <small className="form-text error-text">{props.validation.number}</small>
               </div>
 
               <div className="form-group col-md-4">

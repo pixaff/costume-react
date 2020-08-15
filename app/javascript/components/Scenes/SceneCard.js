@@ -5,11 +5,11 @@ const SceneCard = (props) => {
   const { number, name, description, mood, place } = props.attributes
 
   let roles
-    roles = props.roles.map( (item, index) => {
+    roles = props.attributes.roles.map( (item, index) => {
       return (
         <SceneRole
           key={index}
-          role={item.id}
+          role={item.name}
         />
       )
     })
