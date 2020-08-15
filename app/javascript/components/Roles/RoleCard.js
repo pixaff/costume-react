@@ -2,7 +2,7 @@ import React from 'react'
 // import SceneRole from './SceneRole'
 
 const RoleCard = (props) => {
-  console.log("Props", props)
+  // console.log("Props", props)
   const { id, number, name, role_type } = props.attributes
 
   let scenes = props.attributes.scenes.map(element => element.name);
