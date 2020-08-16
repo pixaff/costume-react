@@ -1,6 +1,8 @@
 import React, { useState, useEffect, Fragment } from 'react'
 import axios from 'axios'
 import ScriptCard from './ScriptCard'
+import CollapsibleTable from './Table'
+import AcUnitIcon from '@material-ui/icons/AcUnit';
 
 const Scripts = props => {
   const [scripts, setScripts] = useState([])
@@ -27,10 +29,11 @@ const grid = scripts.map( item => {
 
   return(
     <div className="container">
-      <div className="header"><h1>This is Scripts</h1></div>
+      <div className="header"><h1>{<AcUnitIcon />}This is Scripts</h1></div>
       <div className="grid">
         {grid}
       </div>
+      <CollapsibleTable />
     </div>
     )
 }

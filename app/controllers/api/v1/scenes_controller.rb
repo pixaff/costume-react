@@ -37,6 +37,6 @@ class Api::V1::ScenesController < ApplicationController
   end
 
   def scene_params
-    params.require(:scene).permit(:number, :name, :description, :body, :mood, :place, :notes)
+    params.require(:scene).permit(:number, :name, :description, :body, :mood, :theme, :notes)
   end
 end

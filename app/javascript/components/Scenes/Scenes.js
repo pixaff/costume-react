@@ -33,9 +33,33 @@ const Scenes = props => {
       setValidation(err.response.data.error)
     })
     .finally(() => {
-      setScene({name: '', description: '', mood: '', place: ''})
+      setScene({name: '', description: '', mood: '', theme: ''})
     })
 
+  }
+
+  // Destroy a scene
+  const handleDestroy = (id, e) => {
+    e.preventDefault()
+
+    const confirmation = confirm("Do you really want to delete this item?");
+    if (confirmation) {
+
+      const csrfToken = document.querySelector('[name=csrf-token]').content
+      axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken
+
+      const url = `/api/v1/scenes/${id}`
+      axios.delete(url)
+      .then( (data) => {
+        let scenes = script.included
+        const index = script.included.findIndex(data => data.id == id && data.type == "scene")
+        scenes.splice(index, 1)
+
+        setScript({...script, scenes})
+
+      })
+      .catch( data => console.log('Error', data) )
+    }
   }
 
   let scenes
@@ -48,6 +72,7 @@ const Scenes = props => {
             key={index}
             attributes={item.attributes}
             roles={item.relationships.roles.data}
+            handleDestroy={handleDestroy}
           />
         )
       }

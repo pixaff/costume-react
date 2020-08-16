@@ -3,6 +3,8 @@
   "private": true,
   "dependencies": {
     "@babel/preset-react": "^7.10.4",
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
@@ -11,6 +13,7 @@
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "bootstrap": "^4.5.0",
     "jquery": "^3.5.1",
+    "material-table": "^1.68.0",
     "popper.js": "^1.16.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",

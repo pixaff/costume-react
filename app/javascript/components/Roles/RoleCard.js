@@ -1,4 +1,7 @@
 import React from 'react'
+import DeleteIcon from '@material-ui/icons/Delete';
+import IconButton from '@material-ui/core/IconButton';
+import Tooltip from '@material-ui/core/Tooltip';
 // import SceneRole from './SceneRole'
 
 const RoleCard = (props) => {
@@ -41,7 +44,11 @@ const RoleCard = (props) => {
         <div className="row no-gutters">
           <div className="scene-footer col-lg-1 d-flex justify-content-center">notes:</div>
           <div className="scene-footer col-lg-11"><p>notes in the footer</p></div>
-          <button onClick={props.handleDestroy.bind(this, id)}> <i className="fa fa-trash">X</i></button>
+          <Tooltip title="Delete">
+            <IconButton aria-label="delete" onClick={props.handleDestroy.bind(this, id)}>
+                <DeleteIcon />
+            </IconButton>
+          </Tooltip>
         </div>
 
       </div>

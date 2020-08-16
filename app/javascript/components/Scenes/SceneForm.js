@@ -58,15 +58,15 @@ const SceneForm = (props) => {
               </div>
 
               <div className="form-group col-md-4">
-                <label htmlFor="inputPlace">place</label>
+                <label htmlFor="inputPlace">Motiv</label>
                 <input
                   id="inputPlace"
                   className="form-control"
                   onChange={props.handleChange}
-                  value={props.scene.place || ""}
+                  value={props.scene.theme || ""}
                   type="text"
-                  name="place"
-                  placeholder="place" />
+                  name="theme"
+                  placeholder="Motiv" />
               </div>
             </div>
 
