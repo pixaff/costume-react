@@ -33,7 +33,7 @@ const Scenes = props => {
       setValidation(err.response.data.error)
     })
     .finally(() => {
-      setScene({name: '', description: '', mood: '', theme: ''})
+      setScene({name: '', description: '', mood: '', set: ''})
     })
 
   }
@@ -62,6 +62,30 @@ const Scenes = props => {
     }
   }
 
+    // Edit a scene
+  const handleEdit = (id, e) => {
+    e.preventDefault()
+    console.log(`This is going to be the edit function for ${id}`)
+    // const confirmation = confirm("Do you really want to delete this item?");
+    // if (confirmation) {
+
+    //   const csrfToken = document.querySelector('[name=csrf-token]').content
+    //   axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken
+
+    //   const url = `/api/v1/scenes/${id}`
+    //   axios.patch(url)
+    //   .then( (data) => {
+    //     let scenes = script.included
+    //     const index = script.included.findIndex(data => data.id == id && data.type == "scene")
+    //     scenes.splice(index, 1)
+
+    //     setScript({...script, scenes})
+
+    //   })
+    //   .catch( data => console.log('Error', data) )
+    // }
+  }
+
   let scenes
   if (script.included) {
     scenes = script.included.map( (item, index) => {
@@ -73,6 +97,7 @@ const Scenes = props => {
             attributes={item.attributes}
             roles={item.relationships.roles.data}
             handleDestroy={handleDestroy}
+            handleEdit={handleEdit}
           />
         )
       }

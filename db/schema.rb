@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_16_111517) do
+ActiveRecord::Schema.define(version: 2020_08_16_140851) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,11 +41,13 @@ ActiveRecord::Schema.define(version: 2020_08_16_111517) do
     t.string "name"
     t.text "description"
     t.string "mood"
-    t.string "theme"
+    t.string "set"
     t.text "notes"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "script_id", null: false
+    t.integer "play_day"
+    t.string "continuity"
     t.index ["script_id"], name: "index_scenes_on_script_id"
   end
 

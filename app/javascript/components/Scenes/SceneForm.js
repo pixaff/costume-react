@@ -30,7 +30,8 @@ const SceneForm = (props) => {
             </div>
 
             <div className="form-row">
-              <div className="form-group col-md-4">
+
+              <div className="form-group col-md-3">
                 <label htmlFor="inputNumber">Scene number</label>
                 <input
                   id="inputNumber"
@@ -45,7 +46,20 @@ const SceneForm = (props) => {
                 <small className="form-text error-text">{props.validation.number}</small>
               </div>
 
-              <div className="form-group col-md-4">
+              <div className="form-group col-md-3">
+                <label htmlFor="inputNumber">play day</label>
+                <input
+                  id="inputPlayDay"
+                  className="form-control"
+                  onChange={props.handleChange}
+                  value={props.scene.play_day || ""}
+                  type="number"
+                  name="play_day"
+                  placeholder="play day"
+                />
+              </div>
+
+              <div className="form-group col-md-3">
                 <label htmlFor="inputMood">Scene mood</label>
                 <input
                   id="inputMood"
@@ -57,15 +71,15 @@ const SceneForm = (props) => {
                   placeholder="Scene mood" />
               </div>
 
-              <div className="form-group col-md-4">
+              <div className="form-group col-md-3">
                 <label htmlFor="inputPlace">Motiv</label>
                 <input
                   id="inputPlace"
                   className="form-control"
                   onChange={props.handleChange}
-                  value={props.scene.theme || ""}
+                  value={props.scene.set || ""}
                   type="text"
-                  name="theme"
+                  name="set"
                   placeholder="Motiv" />
               </div>
             </div>

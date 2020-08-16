@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import SceneRole from './SceneRole'
 import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
+import TransitionsModal from './SceneModal'
 
 const SceneCard = (props) => {
-  console.log(props)
-  const { id, number, name, description, mood, theme } = props.attributes
+  // console.log(props)
+  const { id, number, name, description, mood, set, play_day } = props.attributes
 
   let roles
     roles = props.attributes.roles.map( (item, index) => {
@@ -31,8 +33,9 @@ const SceneCard = (props) => {
               <div className="scene-name col-lg-12">{name}</div>
             </div>
             <div className="row no-gutters">
+              <div className="scene-mood col-lg-4">day: {play_day}</div>
               <div className="scene-mood col-lg-4">mood: {mood}</div>
-              <div className="scene-place col-lg-8">Motiv: {theme}</div>
+              <div className="scene-place col-lg-4">Motiv: {set}</div>
             </div>
           </div>
         </div>
@@ -65,6 +68,12 @@ const SceneCard = (props) => {
                 <DeleteIcon />
             </IconButton>
           </Tooltip>
+          <Tooltip title="Edit">
+            <IconButton aria-label="edit" onClick={props.handleEdit.bind(this, id)}>
+                <EditIcon fontSize="small" />
+            </IconButton>
+          </Tooltip>
+          <TransitionsModal id={id}/>
         </div>
       </div>
     </div>

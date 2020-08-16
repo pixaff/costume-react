@@ -22,7 +22,7 @@ const Script = props => {
 
     axios.get(url)
     .then( resp => {
-      console.log(resp.data)
+      // console.log(resp.data)
       setScript(resp.data)
       setLoaded(true)
     })
