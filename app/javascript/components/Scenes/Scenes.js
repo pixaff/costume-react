@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Fragment } from 'react'
 import axios from 'axios'
+import AxiosHelper from '../../utils/Requests/AxiosHelper'
 import SceneCard from './SceneCard'
 import SceneForm from './SceneForm'
 
@@ -18,8 +19,7 @@ const Scenes = props => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    const csrfToken = document.querySelector('[name=csrf-token]').content
-    axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken
+    AxiosHelper()
 
     const script_id = script.data.id
     axios.post('/api/v1/scenes', {scene, script_id})
@@ -45,8 +45,7 @@ const Scenes = props => {
     const confirmation = confirm("Do you really want to delete this item?");
     if (confirmation) {
 
-      const csrfToken = document.querySelector('[name=csrf-token]').content
-      axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken
+      AxiosHelper()
 
       const url = `/api/v1/scenes/${id}`
       axios.delete(url)

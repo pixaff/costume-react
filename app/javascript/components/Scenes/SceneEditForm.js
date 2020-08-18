@@ -2,15 +2,13 @@ import React from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-const SceneForm = (props) => {
+const SceneEditForm = (props) => {
+  console.log(props)
+  const { id, number, name, description, mood, set, play_day } = props.scene.data.attributes
   const validationError = props.validation === '' ? '' : "error"  // sets error class (i.e. red border)
   return (
+    <div className="container">
 
-    <div className="accordion container" id="accordionScene">
-      <button className="btn btn-primary mb-3" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-        Add Scene
-      </button>
-      <div id="collapseOne" className="collapse" aria-labelledby="headingOne" data-parent="#accordionScene">
         <div className="scene-form">
 
           <form onSubmit={props.handleSubmit} className="needs-validation">
@@ -20,13 +18,12 @@ const SceneForm = (props) => {
                 className="form-control"
                 // className={`form-control ${validationError}`}
                 onChange={props.handleChange}
-                value={props.scene.name || "Pre filled"}
+                value={name || ""}
                 type="text"
                 name="name"
                 placeholder="Scene Name"
                 required
               />
-              <small className="form-text error-text">{props.validation.name}</small>
             </div>
 
             <div className="form-row">
@@ -37,13 +34,13 @@ const SceneForm = (props) => {
                   id="inputNumber"
                   className="form-control"
                   onChange={props.handleChange}
-                  value={props.scene.number || ""}
+                  value={number || ""}
                   type="text"
                   name="number"
                   placeholder="Scene number"
                   required
                 />
-                <small className="form-text error-text">{props.validation.number}</small>
+
               </div>
 
               <div className="form-group col-md-3">
@@ -52,7 +49,7 @@ const SceneForm = (props) => {
                   id="inputPlayDay"
                   className="form-control"
                   onChange={props.handleChange}
-                  value={props.scene.play_day || ""}
+                  value={play_day || ""}
                   type="number"
                   name="play_day"
                   placeholder="play day"
@@ -65,7 +62,7 @@ const SceneForm = (props) => {
                   id="inputMood"
                   className="form-control"
                   onChange={props.handleChange}
-                  value={props.scene.mood || ""}
+                  value={mood || ""}
                   type="text"
                   name="mood"
                   placeholder="Scene mood" />
@@ -77,7 +74,7 @@ const SceneForm = (props) => {
                   id="inputPlace"
                   className="form-control"
                   onChange={props.handleChange}
-                  value={props.scene.set || ""}
+                  value={set || ""}
                   type="text"
                   name="set"
                   placeholder="Motiv" />
@@ -91,21 +88,21 @@ const SceneForm = (props) => {
                 id="inputDescription"
                 className="form-control"
                 onChange={props.handleChange}
-                value={props.scene.description || ""}
+                value={description || ""}
                 type="text"
                 name="description"
                 placeholder="Scene description" />
             </div>
-            <Button className="mb-3" type="submit">store</Button>
+            <Button onClick={props.handleSubmit} className="mb-3">store</Button>
+            <Button onClick={props.handleClose} className="mb-3">cancel</Button>
           </form>
 
         </div>
       </div>
-    </div>
     )
 }
 
-export default SceneForm
+export default SceneEditForm
 
 
 

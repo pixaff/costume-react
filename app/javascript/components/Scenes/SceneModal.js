@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios'
+import SceneEditForm from './SceneEditForm'
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -21,9 +23,26 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function TransitionsModal(props) {
-  // console.log(props)
+  console.log(props)
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [scene, setScene] = useState({})
+
+
+  useEffect(() => {
+  const url = `/api/v1/scenes/${props.id}`
+      axios.get(url)
+      .then( (resp) => {
+        console.log(resp.data)
+        setScene(resp.data)
+      })
+      .catch( data => console.log('Error', data) )
+    }, [])
+
+  const handleChange = (e) => {
+    e.preventDefault()
+    setScene(Object.assign({}, scene, {[e.target.name]: e.target.value}))
+  }
 
   const handleOpen = () => {
     setOpen(true);
@@ -32,6 +51,17 @@ export default function TransitionsModal(props) {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log("submitted")
+    if (noError) {
+      handleClose();
+    }
+    else console.log("Error")
+  };
+
+  const noError = true
 
   return (
     <div>
@@ -52,6 +82,13 @@ export default function TransitionsModal(props) {
       >
         <Fade in={open}>
           <div className={classes.paper}>
+            <SceneEditForm
+              id={props.id}
+              scene={scene}
+              handleChange={handleChange}
+              handleSubmit={handleSubmit}
+              handleClose={handleClose}
+            />
             <h2 id="transition-modal-title">Transition modal</h2>
             <p id="transition-modal-description">ID {props.id} is going to be edited</p>
           </div>

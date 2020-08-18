@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     namespace :api do # , defaults: { format: :json }
       namespace :v1 do
         resources :scripts
-        resources :scenes, only: %i[create destroy]
+        resources :scenes, only: %i[create destroy show]
         resources :roles, only: %i[create destroy]
       end
     end

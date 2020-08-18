@@ -1,4 +1,13 @@
 class Api::V1::ScenesController < ApplicationController
+  before_action :set_scene, only: [:show, :edit, :update, :destroy]
+  def show
+    if authorized?
+      render json: SceneSerializer.new(@scene).serialized_json
+    else
+      render json: { error: 'not authorized' }, status: 401
+    end
+  end
+
   def create
     scene = script.scenes.new(scene_params)
     if no_error?(scene)
@@ -30,6 +39,14 @@ class Api::V1::ScenesController < ApplicationController
   def no_error?(scene)
     true
     # Scene.where(name: scene.name, script_id: scene.script_id).empty?
+  end
+
+  def authorized?
+    @scene.script.user == current_user
+  end
+
+  def set_scene
+    @scene = Scene.find(params[:id])
   end
 
   def script
